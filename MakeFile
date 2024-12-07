@@ -1,0 +1,27 @@
+# SRCS := $(wildcard code/*.cpp)
+# OBJS := $(SRCS:.cpp=.o)
+
+# all: compile link
+
+# compile: $(OBJS)
+
+# %.o: %.cpp
+# 	g++ -Isrc/include -c $< -o $@
+
+# link: $(OBJS)
+# 	g++ $(OBJS) -o main -Lsrc/lib -lsfml-graphics -lsfml-window -lsfml-system
+
+# clean:
+# 	del /Q *.o main.exe
+
+
+all: compile link
+
+compile:
+	g++ -Isrc/include -c code/*.cpp
+
+link:
+	g++ *.o -o main -Lsrc/lib -lsfml-graphics -lsfml-window -lsfml-system 
+
+clean:
+	del *.o main.exe
